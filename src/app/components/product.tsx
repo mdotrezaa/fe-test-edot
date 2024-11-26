@@ -1,16 +1,16 @@
 "use client";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 interface Product {
   id: string;
   name: string | null;
-  image: string | StaticImageData;
+  image?: string | null;
 }
 
 interface ImageData {
   id: string[];
-  image: string | StaticImageData;
+  image: string | null;
 }
 
 export const Product = () => {
@@ -18,6 +18,7 @@ export const Product = () => {
   const [images, setImages] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -63,13 +64,12 @@ export const Product = () => {
     setSelectedProduct(null);
   };
 
-  // Prevent hydration issues by rendering a loading state until mounted
   if (!mounted) {
-    return <div>Loading...</div>; // Show a loading state on initial render
+    return null;
   }
 
   if (loading) {
-    return <div>Loading products...</div>; // Show loading while products are being fetched
+    return <div>Loading...</div>;
   }
 
   return (
@@ -111,7 +111,7 @@ export const Product = () => {
           >
             <div className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-4 p-4 min-h-[400px]">
               <Image
-                src={selectedProduct.image || "/placeholder.jpg"}
+                src={selectedProduct.image}
                 alt={selectedProduct.name || "Preview"}
                 width={800}
                 height={600}
