@@ -116,12 +116,13 @@ export const Product = () => {
           >
             <div className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-4 p-4 min-h-[400px]">
               <Image
-                src={selectedProduct.image}
+                src={selectedProduct.image || "/placeholder.jpg"}
                 alt={selectedProduct.name || "Preview"}
                 width={800}
                 height={600}
                 className="object-contain rounded-lg"
               />
+
               <div>
                 <h2 className="text-xl font-bold">
                   {selectedProduct.name || "Unnamed Product"}
