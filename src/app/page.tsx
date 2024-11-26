@@ -1,6 +1,6 @@
 // import Image from "next/image";
-import { Navbar } from "./components/nav.tsx";
-import { Product } from "./components/product.tsx";
+import { Navbar } from "./components/nav";
+import { Product } from "./components/product";
 
 export default function Home() {
   return (
