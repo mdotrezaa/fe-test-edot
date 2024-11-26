@@ -18,7 +18,6 @@ export const Product = () => {
   const [loading, setLoading] = useState(true);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
-  // Track whether the component is mounted to avoid hydration mismatch
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -39,7 +38,7 @@ export const Product = () => {
         const imageMap: Record<string, string> = {};
         imagesData.data.forEach((item: ImageData) => {
           item.id.forEach((id) => {
-            imageMap[id] = item.image;
+            imageMap[id] = item.image || "/placeholder.jpg";
           });
         });
 
