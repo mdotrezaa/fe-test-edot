@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 interface Product {
   id: string;
   name: string | null;
+  image: string | null;
 }
 
 interface ImageData {
