@@ -79,7 +79,16 @@ export const Product = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Products</h1>
+      <div className="pb-4 w-full flex flex-col">
+        <h2 className="text-4xl font-bold text-center leading-none mb-1">
+          Products
+        </h2>
+        <p className="text-center text-sm text-gray-500 mb-4 w-1/2 mx-auto">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex
+          consequuntur distinctio excepturi molestias aut nesciunt nam corporis,
+          velit iste.
+        </p>
+      </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {products.map((product) => (
           <div
