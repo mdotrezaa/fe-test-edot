@@ -5,9 +5,12 @@ import { useEffect, useState } from "react";
 interface Product {
   id: string;
   name: string | null;
+}
+interface ProductDetail {
+  id: string;
+  name: string | null;
   image?: string | null;
 }
-
 interface ImageData {
   id: string[];
   image: string | null;
@@ -17,7 +20,9 @@ export const Product = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [images, setImages] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<ProductDetail | null>(
+    null,
+  );
 
   const [mounted, setMounted] = useState(false);
 
@@ -39,7 +44,7 @@ export const Product = () => {
         const imageMap: Record<string, string> = {};
         imagesData.data.forEach((item: ImageData) => {
           item.id.forEach((id) => {
-            imageMap[id] = item.image || "/placeholder.jpg";
+            imageMap[id] = item.image || ("/placeholder.jpg" as string);
           });
         });
 
@@ -56,7 +61,7 @@ export const Product = () => {
   }, []);
 
   const openModal = (product: Product) => {
-    const imageUrl = images[product.id] || "/placeholder.jpg";
+    const imageUrl = images[product.id] || ("/placeholder.jpg" as string);
     setSelectedProduct({ ...product, image: imageUrl });
   };
 
@@ -124,7 +129,7 @@ export const Product = () => {
                 <p className="text-md text-gray-600">
                   ID: {selectedProduct.id}
                 </p>
-                <h4 className="text-md font-semibold">Description:</h4>
+                <h4 className="text-md font-semibold mt-3">Description:</h4>
                 <p>
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit
                   repellat culpa hic architecto? Vitae adipisci eius maiores qui
