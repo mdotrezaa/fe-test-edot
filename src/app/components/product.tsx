@@ -5,12 +5,12 @@ import { useEffect, useState } from "react";
 interface Product {
   id: string;
   name: string | null;
-  image: string | null;
+  image: string | StaticImport;
 }
 
 interface ImageData {
   id: string[];
-  image: string | null;
+  image: string | StaticImport;
 }
 
 export const Product = () => {
@@ -72,6 +72,7 @@ export const Product = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
+  console.log(products);
 
   return (
     <div className="container mx-auto p-4">
