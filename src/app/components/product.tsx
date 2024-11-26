@@ -9,7 +9,7 @@ interface Product {
 
 interface ImageData {
   id: string[];
-  image: string;
+  image: string | null;
 }
 
 export const Product = () => {
