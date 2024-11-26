@@ -18,7 +18,6 @@ export const Product = () => {
   const [images, setImages] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -64,15 +63,14 @@ export const Product = () => {
     setSelectedProduct(null);
   };
 
+  // Prevent hydration issues by rendering a loading state until mounted
   if (!mounted) {
-    // Prevent rendering the component until it's mounted (to prevent SSR mismatch)
-    return null;
+    return <div>Loading...</div>; // Show a loading state on initial render
   }
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Loading products...</div>; // Show loading while products are being fetched
   }
-  console.log(products);
 
   return (
     <div className="container mx-auto p-4">
@@ -113,7 +111,7 @@ export const Product = () => {
           >
             <div className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-4 p-4 min-h-[400px]">
               <Image
-                src={selectedProduct.image}
+                src={selectedProduct.image || "/placeholder.jpg"}
                 alt={selectedProduct.name || "Preview"}
                 width={800}
                 height={600}
