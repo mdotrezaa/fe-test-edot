@@ -56,7 +56,7 @@ export const Product = () => {
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
-        setLoading(false);
+        setLoading(true);
       }
     };
 
@@ -78,13 +78,7 @@ export const Product = () => {
 
   if (loading) {
     return (
-      <dotlottie-player
-        ref={animation}
-        autoplay="true"
-        controls=""
-        loop="true"
-        src="/load.lottie"
-      />
+      <dotlottie-player ref={animation} autoplay loop src="/load.lottie" />
     );
   }
 
