@@ -49,7 +49,7 @@ export const Product = () => {
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
-        setLoading(false);
+        setLoading(true);
       }
     };
 
