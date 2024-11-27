@@ -1,4 +1,3 @@
-// import Image from "next/image";
 import { Navbar } from "./components/nav";
 import { Header } from "./components/header";
 import { Product } from "./components/product";

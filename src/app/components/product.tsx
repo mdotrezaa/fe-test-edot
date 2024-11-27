@@ -27,12 +27,6 @@ export const Product = () => {
   );
   const animation = useRef<DotLottiePlayer | null>(null);
 
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   useEffect(() => {
     const fetchProductsAndImages = async () => {
       try {
@@ -71,10 +65,6 @@ export const Product = () => {
   const closeModal = () => {
     setSelectedProduct(null);
   };
-
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <div className="container mx-auto p-4">

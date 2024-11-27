@@ -11,10 +11,6 @@ export const Header = () => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
     const timeout = setTimeout(
       () => {
         if (isDeleting) {
@@ -43,6 +39,10 @@ export const Header = () => {
     setText(words[wordIndex].slice(0, charIndex));
   }, [charIndex, wordIndex, words]);
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const scrollToProduct = () => {
     if (mounted) {
       const productSection = document.getElementById("product");
@@ -51,6 +51,7 @@ export const Header = () => {
       }
     }
   };
+
   return (
     <div className="h-[calc(100vh-100px)] container mx-auto flex justify-center items-center">
       <div className="grid grid-cols-1 md:grid-cols-2 md:gap-4 w-full max-w-4xl">
