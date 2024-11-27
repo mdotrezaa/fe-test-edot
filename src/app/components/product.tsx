@@ -56,7 +56,7 @@ export const Product = () => {
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
-        setLoading(false);
+        setLoading(true);
       }
     };
 
@@ -76,12 +76,6 @@ export const Product = () => {
     return null;
   }
 
-  if (loading) {
-    return (
-      <dotlottie-player ref={animation} autoplay loop src="/load.lottie" />
-    );
-  }
-
   return (
     <div className="container mx-auto p-4">
       <div className="pb-4 w-full flex flex-col">
@@ -94,32 +88,41 @@ export const Product = () => {
           velit iste.
         </p>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className="border rounded-lg p-4 shadow hover:shadow-lg transition cursor-pointer"
-          >
-            <div className="cursor-pointer" onClick={() => openModal(product)}>
-              <Image
-                src={images[product.id] || "/placeholder.jpg"}
-                alt={product.name || "Product Image"}
-                layout="responsive"
-                width={16}
-                height={9}
-                className="rounded-md"
-              />
-            </div>
-            <p className="text-sm text-gray-600 mt-2">
-              Product ID: {product.id}
-            </p>
+      {loading ? (
+        <div className="flex items-center justify-center w-full">
+          <dotlottie-player ref={animation} autoplay loop src="/load.lottie" />
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {products.map((product) => (
+            <div
+              key={product.id}
+              className="border rounded-lg p-4 shadow hover:shadow-lg transition cursor-pointer"
+            >
+              <div
+                className="cursor-pointer"
+                onClick={() => openModal(product)}
+              >
+                <Image
+                  src={images[product.id] || "/placeholder.jpg"}
+                  alt={product.name || "Product Image"}
+                  layout="responsive"
+                  width={16}
+                  height={9}
+                  className="rounded-md"
+                />
+              </div>
+              <p className="text-sm text-gray-600 mt-2">
+                Product ID: {product.id}
+              </p>
 
-            <h2 className="text-md font-semibold">
-              {product.name || "Unnamed Product"}
-            </h2>
-          </div>
-        ))}
-      </div>
+              <h2 className="text-md font-semibold">
+                {product.name || "Unnamed Product"}
+              </h2>
+            </div>
+          ))}
+        </div>
+      )}
 
       {selectedProduct && (
         <div className="modal-overlay" onClick={closeModal}>
