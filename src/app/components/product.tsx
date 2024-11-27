@@ -81,7 +81,7 @@ export const Product = () => {
     <div className="container mx-auto p-4">
       <div className="pb-4 w-full flex flex-col">
         <h2 className="text-4xl font-bold text-center leading-none mb-1">
-          Products
+          Our Products
         </h2>
         <p className="text-center text-sm text-gray-500 mb-4 w-1/2 mx-auto">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex
@@ -116,7 +116,7 @@ export const Product = () => {
 
       {selectedProduct && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black !bg-opacity-5 flex items-center justify-center z-50"
           onClick={closeModal}
         >
           <div
