@@ -56,7 +56,7 @@ export const Product = () => {
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
-        setLoading(true);
+        setLoading(false);
       }
     };
 
@@ -157,7 +157,7 @@ export const Product = () => {
             </div>
             <div className="flex items-center justify-end">
               <button
-                className="block py-2 bg-primary p-4 m-3 rounded-lg text-white text-center"
+                className="block py-2 bg-primary p-4 m-3 rounded-lg text-white text-center hover:bg-orange-500"
                 onClick={closeModal}
               >
                 Close

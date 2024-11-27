@@ -8,6 +8,11 @@ export const Header = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const timeout = setTimeout(
@@ -39,9 +44,11 @@ export const Header = () => {
   }, [charIndex, wordIndex, words]);
 
   const scrollToProduct = () => {
-    const productSection = document.getElementById("product");
-    if (productSection) {
-      productSection.scrollIntoView({ behavior: "smooth" });
+    if (mounted) {
+      const productSection = document.getElementById("product");
+      if (productSection) {
+        productSection.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
   return (
