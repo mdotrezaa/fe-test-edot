@@ -1,5 +1,5 @@
 "use client";
-import * as load from "../../../public/loaddata.json";
+import * as load from "@/public/loaddata.json";
 import { useEffect, useRef } from "react";
 
 export default function AnimationLoading() {
