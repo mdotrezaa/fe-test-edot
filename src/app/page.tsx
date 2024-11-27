@@ -9,7 +9,9 @@ export default function Home() {
       <main>
         <Navbar />
         <Header />
-        <Product />
+        <div id="product">
+          <Product id="product" />
+        </div>
         <footer className="bg-primary text-white py-3 text-center text-sm">
           &copy; {new Date().getFullYear()} Our Company. All rights reserved.
         </footer>

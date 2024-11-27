@@ -27,7 +27,7 @@ export const Product = () => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true); // After the component is mounted on the client, update the state
+    setMounted(true);
   }, []);
 
   useEffect(() => {
@@ -83,7 +83,7 @@ export const Product = () => {
         <h2 className="text-4xl font-bold text-center leading-none mb-1">
           Our Products
         </h2>
-        <p className="text-center text-sm text-gray-500 mb-4 w-1/2 mx-auto">
+        <p className="text-center text-sm md:text-md  text-gray-500 mb-4 w-full md:w-1/2 mx-auto">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex
           consequuntur distinctio excepturi molestias aut nesciunt nam corporis,
           velit iste.
@@ -105,20 +105,19 @@ export const Product = () => {
                 className="rounded-md"
               />
             </div>
+            <p className="text-sm text-gray-600 mt-2">
+              Product ID: {product.id}
+            </p>
 
-            <h2 className="text-md font-semibold mt-2">
+            <h2 className="text-md font-semibold">
               {product.name || "Unnamed Product"}
             </h2>
-            <p className="text-sm text-gray-600">ID: {product.id}</p>
           </div>
         ))}
       </div>
 
       {selectedProduct && (
-        <div
-          className="fixed inset-0 bg-black !bg-opacity-5 flex items-center justify-center z-50"
-          onClick={closeModal}
-        >
+        <div className="modal-overlay" onClick={closeModal}>
           <div
             className="bg-white rounded-lg w-[600px] overflow-hidden"
             onClick={(e) => e.stopPropagation()}
@@ -133,12 +132,12 @@ export const Product = () => {
               />
 
               <div>
+                <p className="text-md text-gray-600">
+                  Product ID: {selectedProduct.id}
+                </p>
                 <h2 className="text-xl font-bold">
                   {selectedProduct.name || "Unnamed Product"}
                 </h2>
-                <p className="text-md text-gray-600">
-                  ID: {selectedProduct.id}
-                </p>
                 <h4 className="text-md font-semibold mt-3">Description:</h4>
                 <p>
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit
@@ -148,12 +147,14 @@ export const Product = () => {
                 </p>
               </div>
             </div>
-            <button
-              className="block w-full py-2 bg-red-500 text-white text-center"
-              onClick={closeModal}
-            >
-              Close
-            </button>
+            <div className="flex items-center justify-end">
+              <button
+                className="block py-2 bg-primary p-4 m-3 rounded-lg text-white text-center"
+                onClick={closeModal}
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
       )}
