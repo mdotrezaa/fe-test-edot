@@ -1,6 +1,8 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import "@johanaarstein/dotlottie-player";
+import type { DotLottiePlayer } from "@johanaarstein/dotlottie-player";
 
 interface Product {
   id: string;
@@ -23,6 +25,7 @@ export const Product = () => {
   const [selectedProduct, setSelectedProduct] = useState<ProductDetail | null>(
     null,
   );
+  const animation = useRef<DotLottiePlayer | null>(null);
 
   const [mounted, setMounted] = useState(false);
 
@@ -74,7 +77,15 @@ export const Product = () => {
   }
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <dotlottie-player
+        ref={animation}
+        autoplay="true"
+        controls=""
+        loop="true"
+        src="/load.lottie"
+      />
+    );
   }
 
   return (
