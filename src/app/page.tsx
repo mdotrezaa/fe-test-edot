@@ -10,7 +10,7 @@ export default function Home() {
         <Navbar />
         <Header />
         <div id="product">
-          <Product id="product" />
+          <Product />
         </div>
         <footer className="bg-primary text-white py-3 text-center text-sm">
           &copy; {new Date().getFullYear()} Our Company. All rights reserved.
