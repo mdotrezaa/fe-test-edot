@@ -9,7 +9,7 @@ export const Navbar = () => {
   }, []);
   const scrollToProduct = () => {
     if (mounted) {
-      const productSection = document?.getElementById("product");
+      const productSection = document.getElementById("product");
       if (productSection) {
         productSection.scrollIntoView({ behavior: "smooth" });
       }

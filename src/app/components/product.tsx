@@ -1,8 +1,8 @@
 "use client";
+import dynamic from "next/dynamic";
 import Image from "next/image";
-import { useEffect, useState, useRef } from "react";
-import "@johanaarstein/dotlottie-player";
-import type { DotLottiePlayer } from "@johanaarstein/dotlottie-player";
+import { useEffect, useState } from "react";
+const AnimationLoading = dynamic(() => import("./loading"), { ssr: false });
 
 interface Product {
   id: string;
@@ -25,7 +25,6 @@ export const Product = () => {
   const [selectedProduct, setSelectedProduct] = useState<ProductDetail | null>(
     null,
   );
-  const animation = useRef<DotLottiePlayer | null>(null);
 
   useEffect(() => {
     const fetchProductsAndImages = async () => {
@@ -50,7 +49,7 @@ export const Product = () => {
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
-        setLoading(false);
+        setLoading(true);
       }
     };
 
@@ -80,7 +79,7 @@ export const Product = () => {
       </div>
       {loading ? (
         <div className="flex items-center justify-center w-full">
-          <dotlottie-player ref={animation} autoplay loop src="/load.lottie" />
+          <AnimationLoading />
         </div>
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
